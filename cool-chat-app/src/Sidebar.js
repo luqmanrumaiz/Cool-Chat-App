@@ -4,6 +4,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { Avatar, IconButton } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import SidebarChat from "./SidebarChat.js";
 
 function Sidebar() {
   return (
@@ -22,8 +23,23 @@ function Sidebar() {
             fontSize="1.2em"
             children={<SearchOutlined />}
           />
-          <Input placeholder="Search or Start a new Chat" />
+          <Input
+            _placeholder={{ color: "lightgrey" }}
+            placeholder="Search or Start a new Chat"
+          />
         </InputGroup>
+      </div>
+      <div className="sidebar__chats">
+        <SidebarChat
+          pfp_url="https://bit.ly/sage-adebayo"
+          name="Shakil Hassim"
+          last_sent_message="Hey.."
+        />
+        <SidebarChat
+          pfp_url="https://bit.ly/sage-adebayo"
+          name="John"
+          last_sent_message="Whats Up Dude.."
+        />
       </div>
     </div>
   );

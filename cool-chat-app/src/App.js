@@ -9,7 +9,11 @@ function App() {
       <div className="app">
         <div className="app__body">
           <Sidebar />
-          <Chat />
+          <Chat
+            pfp_url="https://bit.ly/sage-adebayo"
+            name="Shakil Hassim"
+            last_time_seen="Last seen 30 Minutes ago.."
+          />
         </div>
       </div>
     </ChakraProvider>

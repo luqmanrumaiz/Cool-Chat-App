@@ -1,6 +1,6 @@
+import React from "react";
 import { Flex, Text } from "@chakra-ui/layout";
 import { Avatar, Box } from "@material-ui/core";
-import React from "react";
 import "./SidebarChat.css";
 
 function SidebarChat(props) {

@@ -22,6 +22,13 @@ const pusher = new Pusher({
 
 app.use(express.json());
 
+// Removing Headers from Message and allowing message to be sent from any Endpoint
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  next();
+});
+
 // DB Config
 
 const connection_url =

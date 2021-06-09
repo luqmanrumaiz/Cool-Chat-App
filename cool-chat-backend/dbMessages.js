@@ -7,4 +7,4 @@ const coolchatSchema = mongoose.Schema({
   recieved: Boolean,
 });
 
-export default mongoose.model("messageCollection", coolchatSchema);
+export default mongoose.model("messagecollections", coolchatSchema);

@@ -20,9 +20,14 @@
 }
 
 .chat__message {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .chat__timestamp {
+  margin-left: 5px;
   font-size: 10px;
+}
+
+.chat__input {
+  background-color: #424242;
 }

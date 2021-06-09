@@ -23,3 +23,8 @@
   background-color: rgb(66, 66, 66);
   padding: 10px;
 }
+
+.sidebar__chats {
+  flex: 1;
+  overflow: scroll;
+}

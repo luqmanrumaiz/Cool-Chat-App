@@ -5,8 +5,12 @@ import Chat from "./Chat.js";
 import { ChakraProvider } from "@chakra-ui/react";
 import Pusher from "pusher-js";
 import axios from "./axios";
+import GoogleLogin from "./GoogleLogin";
+import { useStateValue } from "./StateProvider";
 
 function App() {
+  const [{ user }, dispatch] = useStateValue();
+
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -31,21 +35,25 @@ function App() {
     };
   }, [messages]);
 
-  console.log(messages);
+  if (user != null) console.log(user.photoURL);
 
   return (
     <ChakraProvider>
-      <div className="app">
-        <div className="app__body">
-          <Sidebar />
-          <Chat
-            messages={messages}
-            pfp_url="https://bit.ly/sage-adebayo"
-            name="Shakil Hassim"
-            last_time_seen="Last seen 30 Minutes ago.."
-          />
+      {!user ? (
+        <GoogleLogin></GoogleLogin>
+      ) : (
+        <div className="app">
+          <div className="app__body">
+            <Sidebar />
+            <Chat
+              messages={messages}
+              pfp_url={user.photoURL}
+              name={user.displayName}
+              last_time_seen="Last seen 30 Minutes ago.."
+            />
+          </div>
         </div>
-      </div>
+      )}
     </ChakraProvider>
   );
 }

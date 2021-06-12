@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Sidebar from "./Sidebar.js";
-import Chat from "./Chat.js";
+import Sidebar from "./components/Sidebar.js";
+import Chat from "./components/Chat.js";
 import { ChakraProvider } from "@chakra-ui/react";
 import Pusher from "pusher-js";
 import axios from "./axios";
-import GoogleLogin from "./GoogleLogin";
+import GoogleLogin from "./components/GoogleLogin";
 import { useStateValue } from "./StateProvider";
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
   return (
     <ChakraProvider>
       {!user ? (
-        <GoogleLogin></GoogleLogin>
+        <GoogleLogin/>
       ) : (
         <div className="app">
           <div className="app__body">

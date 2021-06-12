@@ -1,0 +1,33 @@
+.googleLogin {
+    height: 100vh;
+    background-color: lightgrey;
+    display: grid;
+    place-items: center;
+}
+
+.googleLogin__container {
+    display: grid;
+    place-items: center;
+    padding: 100px;
+    text-align: center;
+    background-color: azure;
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 15px 5px #585858;
+    box-shadow: 5px 5px 15px 5px #585858;
+}
+
+.googleLogin__container > img {
+    object-fit: contain;
+    height: 100px;
+}
+
+#portfolioLink {
+    color: deepskyblue;
+}
+
+.googleLogin__button  {
+    margin-top: 50px;
+    text-transform: inherit !important;
+    background-color: green !important;
+    color: white !important;
+}

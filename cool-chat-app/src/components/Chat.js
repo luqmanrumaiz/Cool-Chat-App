@@ -14,13 +14,18 @@ import {
 import SendIcon from "@material-ui/icons/Send";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import axios from "axios";
+import { useStateValue } from "../StateProvider";
 
 function Chat(props) {
+
+  const [{ user }, dispatch] = useStateValue();
   const [value, setValue] = React.useState("");
+
   const handleChange = (event) => setValue(event.target.value);
 
   const sendMessage = () => {
     axios.post("/messages/new", {
+      collectionName: user.displayName,
       name: "Luqman",
       message: value,
       timestamp: new Date().toUTCString(),
@@ -67,7 +72,6 @@ function Chat(props) {
                   borderRadius="full"
                 >
                   <Avatar
-                    src="https://bit.ly/sage-adebayo"
                     size="xs"
                     name="Segun Adebayo"
                     ml={-1}
@@ -126,7 +130,7 @@ function Chat(props) {
         />
         <InputRightElement
           children={
-            <IconButton onClick={sendMessage()}>
+            <IconButton onClick={() => {sendMessage()}}>
               <SendIcon style={{ color: "lightgrey" }} />
             </IconButton>
           }

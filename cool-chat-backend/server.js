@@ -3,7 +3,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Pusher from "pusher";
-import Messages from "./dbMessages.js";
+import coolChatSchema from "./coolChatSchema.js";
 
 // App Configs
 
@@ -67,8 +67,12 @@ db.once("open", () => {
 
 app.get("/", (req, res) => res.status(200).send("Hello World")); // Creating a test Base URL Get Request
 
-app.get("/messages/sync", (req, res) => {
-  Messages.find((err, data) => {
+app.post("/messages/sync", (req, res) => {
+  var collectionName = req.body.collectionName;
+
+  console.log("collection ", collectionName);
+
+  mongoose.model(collectionName, coolChatSchema).find((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -78,17 +82,22 @@ app.get("/messages/sync", (req, res) => {
 });
 
 app.post("/messages/new", (req, res) => {
+  var collectionName = req.body.collectionName;
+
+  delete req.body.collectionName;
   const dbMessage = req.body;
 
-  Messages.create(dbMessage, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-  });
+  mongoose
+    .model(collectionName, coolChatSchema)
+    .create(dbMessage, (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).send(data);
+      }
+    });
 });
 
 // Listner
 
-app.listen(port, () => console.log("Listening on localhost:9000}"));
+app.listen(port, () => console.log("Listening on localhost:9000"));

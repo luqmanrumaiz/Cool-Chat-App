@@ -4,6 +4,7 @@ import "./index.css";
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
 import App from "./App";
+import GoogleLogin from "./components/GoogleLogin";
 
 ReactDOM.render(
   <React.StrictMode>
